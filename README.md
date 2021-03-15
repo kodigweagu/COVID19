@@ -13,4 +13,6 @@ jQuery creates the XMLHttpRequest for calling the API endpoint.
 Bootstrap CSS is used for building the responsive, mobile first fluid front-end design.
 Unit tests for the controller are built using the Jasmine and Karma frameworks as these come highly recommended for testing AngularJS applications and work well with the angular-mocks and mock-ajax libraries for testing the application's functionality.
 
+To run the application, open index.html from the project folder in a browser.
+
 To run tests, run 'karma start' in terminal from the project folder with Node.js installed ( https://nodejs.org/en/download/ ).
