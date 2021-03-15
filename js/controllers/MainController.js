@@ -20,12 +20,12 @@ app.controller('MainController', ['$scope', function($scope){
 	  async:false,
 	};
 
-	compare = function( a, b ) {
+	$scope.compare = function( a, b ) {
 	  return b[$scope.orderBy] - a[$scope.orderBy];
 	}
 
 	$scope.sortCountries = function(){
-		$scope.data.Countries.sort(compare);
+		$scope.data.Countries.sort($scope.compare);
 	};
 
 	$scope.showCountry = function(slug){
@@ -48,7 +48,7 @@ app.controller('MainController', ['$scope', function($scope){
 		document.getElementById("show-more").style.display = "";
 	};
 
-	getSummary = function(){
+	$scope.getSummary = function(){
 		$.ajax(settings)
 		.done( function (response) {
 			$scope.Global = {
@@ -70,6 +70,6 @@ app.controller('MainController', ['$scope', function($scope){
 		});
 	}
 
-	getSummary();
+	$scope.getSummary();
 	
 }])

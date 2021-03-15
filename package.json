@@ -1,0 +1,29 @@
+{
+  "name": "covid19",
+  "version": "1.0.0",
+  "description": "covid19 statistics web application",
+  "main": "js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodigweagu/COVID19.git"
+  },
+  "author": "Kene Igweagu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kodigweagu/COVID19/issues"
+  },
+  "homepage": "https://github.com/kodigweagu/COVID19#readme",
+  "devDependencies": {
+    "jasmine": "^3.6.4",
+    "karma": "^6.2.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-jasmine": "^4.0.1"
+  },
+  "dependencies": {
+    "jasmine-ajax": "^4.0.0"
+  }
+}
