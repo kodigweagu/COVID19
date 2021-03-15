@@ -1,4 +1,4 @@
-app.controller('MainController', ['$scope', function($scope){
+app.controller('MainController', ['$scope', '$http', function($scope, $http){
 	
 	$scope.LIST_SIZE = 10;
 
@@ -12,21 +12,6 @@ app.controller('MainController', ['$scope', function($scope){
 	];
 
 	$scope.orderBy = "TotalConfirmed";
-
-	var settings = {
-		"url": "https://api.covid19api.com/summary",
-		"method": "GET",
-		"timeout": 0,
-		async:false,
-	};
-
-	$scope.compare = function( a, b ) {
-		return b[$scope.orderBy] - a[$scope.orderBy];
-	}
-
-	$scope.sortCountries = function(){
-		$scope.data.Countries.sort($scope.compare);
-	};
 
 	$scope.showCountry = function(slug){
 		$scope.country = $scope.data.Countries.filter(function(element){ return element.Slug == slug;})[0];
@@ -49,27 +34,28 @@ app.controller('MainController', ['$scope', function($scope){
 	};
 
 	$scope.getSummary = function(){
-		$.ajax(settings)
-		.done( function (response) {
+		$http({
+			method: 'GET',
+			url: 'https://api.covid19api.com/summary'
+		}).then(function (response) {
 			$scope.Global = {
-				"ID": response.ID,
+				"ID": response.data.ID,
 				"Country": "Worldwide",
 				"CountryCode": "WW",
 				"Slug": "world",
-				"NewConfirmed": response.Global.NewConfirmed,
-				"TotalConfirmed": response.Global.TotalConfirmed,
-				"NewDeaths": response.Global.NewDeaths,
-				"TotalDeaths": response.Global.TotalDeaths,
-				"NewRecovered": response.Global.NewRecovered,
-				"TotalRecovered": response.Global.TotalRecovered,
-				"Date": response.Global.Date,
+				"NewConfirmed": response.data.Global.NewConfirmed,
+				"TotalConfirmed": response.data.Global.TotalConfirmed,
+				"NewDeaths": response.data.Global.NewDeaths,
+				"TotalDeaths": response.data.Global.TotalDeaths,
+				"NewRecovered": response.data.Global.NewRecovered,
+				"TotalRecovered": response.data.Global.TotalRecovered,
+				"Date": response.data.Global.Date,
 			};
 			$scope.showGlobal();
-			$scope.data = response;
-			$scope.sortCountries();
-		});
+			$scope.data = response.data;
+			}, function (error) {
+				console.log(error.data)
+			});
 	}
-
 	$scope.getSummary();
-	
 }])

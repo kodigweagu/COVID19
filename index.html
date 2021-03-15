@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- jQuery 3 -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Bootstrap 3 -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -29,16 +30,16 @@
 										<th scope="col">
 											Order By:
 											<select ng-model="orderBy" ng-change="sortCountries()">
-												<option ng-repeat="option in orderOptions" value="{{option.value}}">{{option.display}}</option>
+												<option ng-repeat="option in orderOptions" value="{{option.value}}" ng-bind="option.display"></option>
 											</select>
 										</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="item in data.Countries | filter:search" ng-show="$index<LIST_SIZE" >
-										<td>{{ $index + 1 }}</td>
-										<td><a ng-click="showCountry(item.Slug)" class="cursor-pointer">{{ item.Country }}</a></td>
-										<td>{{ item[orderBy] }}</td>
+									<tr ng-repeat="item in data.Countries | filter:search | orderBy:orderBy:true" ng-show="$index<LIST_SIZE" >
+										<td ng-bind="$index + 1"></td>
+										<td><a ng-click="showCountry(item.Slug)" class="cursor-pointer" ng-bind="item.Country"></a></td>
+										<td ng-bind="item[orderBy]"></td>
 									</tr>
 								</tbody>
 							</table>
@@ -50,7 +51,7 @@
 						<div>
 							<p>This table shows the number of coronavirus cases. The information is provided by the <a href="https://covid19api.com/" target="_blank">COVID19 API</a>.</p>
 							<div class="well">
-								<h3>{{ country.Country }}</h3>
+								<h3 ng-bind="country.Country"></h3>
 								<table class="table table-hover">
 									<thead>
 										<tr>
@@ -62,18 +63,18 @@
 									<tbody>
 										<tr>
 											<th scope="row">Confirmed</th>
-											<td>{{ country.NewConfirmed }}</td>
-											<td>{{ country.TotalConfirmed }}</td>
+											<td ng-bind="country.NewConfirmed"></td>
+											<td ng-bind="country.TotalConfirmed"></td>
 										</tr>
 										<tr>
 											<th scope="row">Recovered</th>
-											<td>{{ country.NewRecovered }}</td>
-											<td>{{ country.TotalRecovered }}</td>
+											<td ng-bind="country.NewRecovered"></td>
+											<td ng-bind="country.TotalRecovered"></td>
 										</tr>
 										<tr>
 											<th scope="row">Deaths</th>
-											<td>{{ country.NewDeaths }}</td>
-											<td>{{ country.TotalDeaths }}</td>
+											<td ng-bind="country.NewDeaths"></td>
+											<td ng-bind="country.TotalDeaths"></td>
 										</tr>
 									</tbody>
 								</table>
