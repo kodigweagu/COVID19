@@ -20,8 +20,10 @@
     "jasmine": "^3.6.4",
     "karma": "^6.2.0",
     "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^2.1.0",
     "karma-ie-launcher": "^1.0.0",
-    "karma-jasmine": "^4.0.1"
+    "karma-jasmine": "^4.0.1",
+    "karma-safari-launcher": "^1.0.0"
   },
   "dependencies": {
     "jasmine-ajax": "^4.0.0"

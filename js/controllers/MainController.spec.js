@@ -47,8 +47,10 @@ describe('MainController', function() {
 				"TotalRecovered": 300,
 				"Date": (new Date()).toISOString()
 				};
+			$scope.getSummary();
 			var response = {ID:1, Global: global};
 			$httpBackend.when('GET', 'https://api.covid19api.com/summary').respond(response);
+			$httpBackend.expect('GET', 'https://api.covid19api.com/summary');
 			$httpBackend.expect('GET', 'https://api.covid19api.com/summary');
 			$httpBackend.flush();
 			$httpBackend.verifyNoOutstandingExpectation();
