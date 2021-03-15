@@ -15,13 +15,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/angular-mocks/1.8.2/angular-mocks.min.js',
-      'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js',
-      'node_modules/jasmine-ajax/lib/mock-ajax.js',
-      'js/app.js',
-      'js/controllers/MainController.js',
-      'js/controllers/MainController.spec.js'
+    'https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/angular-mocks/1.8.2/angular-mocks.min.js',
+    'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js',
+    'node_modules/jasmine-ajax/lib/mock-ajax.js',
+    'js/app.js',
+    'js/controllers/MainController.js',
+    'js/controllers/MainController.spec.js'
     ],
 
 
@@ -71,5 +71,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
+})
 }

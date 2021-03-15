@@ -3,25 +3,25 @@ app.controller('MainController', ['$scope', function($scope){
 	$scope.LIST_SIZE = 10;
 
 	$scope.orderOptions = [
-		{ display: "Total Confirmed", value: "TotalConfirmed"},
-		{ display: "New Confirmed", value: "NewConfirmed"},
-		{ display: "Total Deaths", value: "TotalDeaths"},
-		{ display: "New Deaths", value: "NewDeaths"},
-		{ display: "Total Recovered", value: "TotalRecovered"},
-		{ display: "New Recovered", value: "NewRecovered"}
+	{ display: "Total Confirmed", value: "TotalConfirmed"},
+	{ display: "New Confirmed", value: "NewConfirmed"},
+	{ display: "Total Deaths", value: "TotalDeaths"},
+	{ display: "New Deaths", value: "NewDeaths"},
+	{ display: "Total Recovered", value: "TotalRecovered"},
+	{ display: "New Recovered", value: "NewRecovered"}
 	];
 
 	$scope.orderBy = "TotalConfirmed";
 
 	var settings = {
-	  "url": "https://api.covid19api.com/summary",
-	  "method": "GET",
-	  "timeout": 0,
-	  async:false,
+		"url": "https://api.covid19api.com/summary",
+		"method": "GET",
+		"timeout": 0,
+		async:false,
 	};
 
 	$scope.compare = function( a, b ) {
-	  return b[$scope.orderBy] - a[$scope.orderBy];
+		return b[$scope.orderBy] - a[$scope.orderBy];
 	}
 
 	$scope.sortCountries = function(){

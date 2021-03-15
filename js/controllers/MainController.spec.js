@@ -83,7 +83,7 @@ describe('MainController', function() {
 		it('sets $scope.country to the global information in $scope.Global', function() {
 			var $scope = $rootScope.$new();
 			var controller = $controller('MainController', { $scope: $scope });
-            $scope.Global = {
+			$scope.Global = {
 				"Country": "Worldwide",
 				"Slug": "world"
 			};
