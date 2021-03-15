@@ -1,5 +1,5 @@
 # COVID19
-COVID19 Statistics web application
+COVID19 Statistics web application.
 In this project, I use the covid19 API ( https://covid19api.com/ ) to build a simple single page web application where a user can upon visiting the site, immediately view a list of the 10 countries with the most cases of COVID-19. I also include functionality to access details for each of these countries, and global statistics. For improved user experience, there is added functionality for listing all countries, filtering countries by name, and ranking listed countries by one of:
 Total Confirmed
 New Confirmed
