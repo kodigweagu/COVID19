@@ -1,11 +1,19 @@
 .logo {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: none;
-	margin-top: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: none;
+    margin-top: 0;
 }
 
 .cursor-pointer {
-	cursor: pointer;
+    cursor: pointer;
+}
+
+div.grid-striped div.row:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05);
+}
+
+div.grid-striped div.row {
+    padding: 3px;
 }

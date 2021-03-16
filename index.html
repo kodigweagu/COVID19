@@ -15,83 +15,64 @@
   <title>COVID19 Statistics</title>
 </head>
 <body>
-  <div ng-app="covid19" class="container">
-    <div ng-controller="MainController" class="container">
-      <header>
-        <a ng-click="showGlobal()" class="cursor-pointer"><img src="assets/logo.png" alt="COVID19 Coronavirus" class="logo"></a>
-      </header>
-      <main>
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>
-                <label>Search: <input type="text" ng-model="search.Country"></label>
-                <div>
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Rank</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">
-                          Order By:
-                          <select ng-model="orderBy" ng-change="sortCountries()">
-                            <option ng-repeat="option in orderOptions" value="{{option.value}}" ng-bind="option.display"></option>
-                          </select>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr ng-repeat="item in data.Countries | filter:search | orderBy:orderBy:true" ng-show="$index<LIST_SIZE" >
-                        <td ng-bind="$index + 1"></td>
-                        <td><a ng-click="showCountry(item.Slug)" class="cursor-pointer" ng-bind="item.Country"></a></td>
-                        <td ng-bind="item[orderBy]"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <a ng-click="showMore()" id="show-more" class="cursor-pointer">More...</a>
-                  <a ng-click="showLess()" id="show-less" class="cursor-pointer" style="display: none">Less...</a>
-                </div>
-              </td>
-              <td>
-                <div>
-                  <header><p>This table shows the number of coronavirus cases. The information is provided by the <a href="https://covid19api.com/" target="_blank">COVID19 API</a>.</p></header>
-                  <div class="well">
-                    <h3 ng-bind="country.Country"></h3>
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th scope="col"></th>
-                          <th scope="col">New</th>
-                          <th scope="col">Total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">Confirmed</th>
-                          <td ng-bind="country.NewConfirmed"></td>
-                          <td ng-bind="country.TotalConfirmed"></td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Recovered</th>
-                          <td ng-bind="country.NewRecovered"></td>
-                          <td ng-bind="country.TotalRecovered"></td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Deaths</th>
-                          <td ng-bind="country.NewDeaths"></td>
-                          <td ng-bind="country.TotalDeaths"></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </main>
+  <main>
+    <div ng-app="covid19" class="container-fluid grid-striped">
+      <div ng-controller="MainController" class="container">
+        <header>
+          <a ng-click="showGlobal()" class="cursor-pointer"><img src="assets/logo.png" alt="COVID19 Coronavirus" class="logo"></a>
+        </header>
+        <div class="row">
+          <div class="col-sm-5">
+            <label>Search: <input type="text" ng-model="search.Country"></label>
+            <div class="row">
+              <div class="col-sm-2">Rank</div>
+              <div class="col-sm-4">Country</div>
+              <div class="col-sm-6">
+                Order By:<select ng-model="orderBy" ng-change="sortCountries()">
+                  <option ng-repeat="option in orderOptions" value="{{option.value}}" ng-bind="option.display"></option>
+                </select>
+              </div>
+            </div>
+            <div ng-repeat="item in data.Countries | filter:search | orderBy:orderBy:true" ng-show="$index<LIST_SIZE" class="row">
+              <div ng-bind="$index + 1" class="col-sm-2">1</div>
+              <div class="col-sm-4"><a ng-click="showCountry(item.Slug)" class="cursor-pointer" ng-bind="item.Country"></a></div>
+              <div ng-bind="item[orderBy]" class="col-sm-6"></div>
+            </div>
+            <a ng-click="showMore()" id="show-more" class="cursor-pointer">More...</a>
+            <a ng-click="showLess()" id="show-less" class="cursor-pointer" style="display: none">Less...</a>
+          </div>
+          <div class="col-sm-7">
+            <p>This table shows the number of coronavirus cases. The information is provided by the <a href="https://covid19api.com/" target="_blank">COVID19 API</a>.</p>
+            <div class="well">
+              <div class="row">
+                <div class="col-sm-12"><h3 ng-bind="country.Country"></h3></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">&emsp;</div>
+                <div class="col-sm-4">New</div>
+                <div class="col-sm-4">Total</div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">Confirmed</div>
+                <div ng-bind="country.NewConfirmed" class="col-sm-4"></div>
+                <div ng-bind="country.TotalConfirmed" class="col-sm-4"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">Recovered</div>
+                <div ng-bind="country.NewRecovered" class="col-sm-4"></div>
+                <div ng-bind="country.TotalRecovered" class="col-sm-4"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">Deaths</div>
+                <div ng-bind="country.NewDeaths" class="col-sm-4"></div>
+                <div ng-bind="country.TotalDeaths" class="col-sm-4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </main>
   <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <!-- Modules -->
