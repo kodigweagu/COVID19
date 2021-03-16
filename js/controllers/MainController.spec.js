@@ -37,7 +37,7 @@ describe('MainController', function() {
     });
 
     describe('$scope.getSummary', function() {
-        it('should make an $http GET call to the url for getting a summary by default', function() {
+        it('should be called to make an $http GET call to the url for getting a summary by default', function() {
             var global = {
                 "NewConfirmed": 10,
                 "TotalConfirmed": 100,
@@ -47,10 +47,8 @@ describe('MainController', function() {
                 "TotalRecovered": 300,
                 "Date": (new Date()).toISOString()
             };
-            $scope.getSummary();
             var response = {ID:1, Global: global};
             $httpBackend.when('GET', 'https://api.covid19api.com/summary').respond(response);
-            $httpBackend.expect('GET', 'https://api.covid19api.com/summary');
             $httpBackend.expect('GET', 'https://api.covid19api.com/summary');
             $httpBackend.flush();
             $httpBackend.verifyNoOutstandingExpectation();
