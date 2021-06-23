@@ -15,5 +15,5 @@ Unit tests for the controller are built using the Jasmine and Karma frameworks a
 To run the application, open index.html from the project folder in a browser.
 
 To run tests with Node.js installed ( https://nodejs.org/en/download/ ), in a terminal from the project folder:
-run 'npm i' to install project dependencies
+run 'npm i' to install project dependencies,
 run 'karma start'
